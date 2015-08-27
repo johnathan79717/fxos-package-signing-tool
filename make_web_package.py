@@ -20,48 +20,63 @@ dest_package = open(sys.argv[2], "wb")
 # cd to the folder so we have relative paths
 os.chdir(rootdir)
 
+paths = []
 for root, subdirs, files in os.walk("."):
   for onefile in files:
     path = os.path.join(root, onefile)
-    try:
-      txt = open(path)
-    except:
-      # if we can't open the file, then skip it
-      continue
-    # Write token to mark begining of the file
-    dest_package.write("--"+token+"\r\n")
+    paths.append(path)
 
-    # Content location header
-    dest_package.write("Content-Location: "+ os.path.normpath(path) + "\r\n")
+# the manifest has to be the first resource
+try:
+  manifest_index = paths.index('./manifest.webapp');
+except:
+  print("manifest.webapp not found");
+  raise
 
-    # Figure out the content type
-    content_type = "text/plain"
-    if path.endswith(".html") or path.endswith(".htm"):
-      content_type = "text/html"
-    if path.endswith(".js"):
-      content_type = "text/javascript"
-    if path.endswith(".png"):
-      content_type = "image/png"
-    if path.endswith(".jpg"):
-      content_type = "image/jpg"
-    if path.endswith(".gif"):
-      content_type = "image/gif"
-    if path.endswith(".svg"):
-      content_type = "image/svg"
-    if path.endswith(".ogg"):
-      content_type = "audio/ogg"
-    if path.endswith(".ogg"):
-      content_type = "application/octet-stream"
-    if path.endswith(".json"):
-      content_type = "application/json"
-    if path.endswith(".css"):
-      content_type = "text/css"
-    if path.endswith(".webapp"):
-      content_type = "application/x-web-app-manifest+json"
-    dest_package.write("Content-Type: "+content_type +"\r\n")
-    dest_package.write("\r\n")
-    # Write file contents
-    dest_package.write(txt.read())
+manifest_path = paths[manifest_index]
+del paths[manifest_index]
+paths.insert(0, manifest_path)
+
+for path in paths:
+  try:
+    txt = open(path)
+  except:
+    # if we can't open the file, then skip it
+    continue
+  # Write token to mark begining of the file
+  dest_package.write("--"+token+"\r\n")
+
+  # Content location header
+  dest_package.write("Content-Location: "+ os.path.normpath(path) + "\r\n")
+
+  # Figure out the content type
+  content_type = "text/plain"
+  if path.endswith(".html") or path.endswith(".htm"):
+    content_type = "text/html"
+  if path.endswith(".js"):
+    content_type = "text/javascript"
+  if path.endswith(".png"):
+    content_type = "image/png"
+  if path.endswith(".jpg"):
+    content_type = "image/jpg"
+  if path.endswith(".gif"):
+    content_type = "image/gif"
+  if path.endswith(".svg"):
+    content_type = "image/svg"
+  if path.endswith(".ogg"):
+    content_type = "audio/ogg"
+  if path.endswith(".ogg"):
+    content_type = "application/octet-stream"
+  if path.endswith(".json"):
+    content_type = "application/json"
+  if path.endswith(".css"):
+    content_type = "text/css"
+  if path.endswith(".webapp"):
+    content_type = "application/x-web-app-manifest+json"
+  dest_package.write("Content-Type: "+content_type +"\r\n")
+  dest_package.write("\r\n")
+  # Write file contents
+  dest_package.write(txt.read())
 
 # Write package end line
 dest_package.write("--"+token+"--")
