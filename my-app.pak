@@ -1,0 +1,63 @@
+--8CBW91Y00A
+Content-Location: page2.html
+Content-Type: text/html
+
+<html>
+  page2.html
+</html>
+--8CBW91Y00A
+Content-Location: index.html
+Content-Type: text/html
+
+<html>
+  index.html
+</html>
+--8CBW91Y00A
+Content-Location: manifest.webapp
+Content-Type: application/x-web-app-manifest+json
+
+{
+  "name": "My App",
+  "description": "A great app!",
+  "moz-uuid": "some-uuid",
+  "moz-permissions": [
+    {
+      "systemXHR": {
+        "description": "Needed to download stuff"
+      },
+      "devicestorage:pictures": {
+        "description": "Need to load pictures"
+      }
+    }
+  ],
+  "moz-resources": [
+    {
+      "src": "index.html",
+      "integrity": "sha256-kass...eoirW-e"
+    },
+    {
+      "src": "page2.html",
+      "integrity": "sha256-kasguie...ngeW-e"
+    },
+    {
+      "src": "js/script.js",
+      "integrity": "sha256-agjdia2...wgda"
+    },
+    {
+      "src": "js/library.js",
+       "integrity": "sha256-geijfi...ae3W"
+    }
+  ],
+  "moz-package-location": "https://example.com/myapp/app.pak"
+}
+--8CBW91Y00A
+Content-Location: js/script.js
+Content-Type: text/javascript
+
+// script.js
+--8CBW91Y00A
+Content-Location: js/library.js
+Content-Type: text/javascript
+
+// library.js
+--8CBW91Y00A--
