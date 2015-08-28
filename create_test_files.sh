@@ -7,7 +7,6 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 export BASE_PATH=`dirname $0`
-echo $BASE_PATH
 
 # location of the 'sign_b2g_manifest.py' script
 export SIGN_SCR_PATH=.
@@ -168,13 +167,19 @@ mkdir -p ${INVALID_MANIFEST_PATH}
 CURDIR=`pwd`
 cd $CURDIR
 
+if [ $# == "0" ]; then
+  MANIFEST_PATH= ${BASE_PATH}/manifest.webapp
+else
+  MANIFEST_PATH=$1
+fi
+
 # Sign a manifest file with a known issuer
-signManifest ${DB_PATH} ${BASE_PATH}/manifest.webapp \
+signManifest ${DB_PATH} ${MANIFEST_PATH} \
              ${VALID_MANIFEST_PATH}/manifest.sig \
              ${TRUSTED_EE} ${PASSWORD_FILE}
 
 # Sign a manifest file with a unknown issuer
-signManifest ${DB_PATH} ${BASE_PATH}/manifest.webapp \
+signManifest ${DB_PATH} ${MANIFEST_PATH} \
              ${INVALID_MANIFEST_PATH}/manifest.sig \
              ${UNTRUSTED_EE} ${PASSWORD_FILE}
 

@@ -1,3 +1,5 @@
 signingDB
-*.pyc
 *.swp
+*.pyc
+testValidSignedManifest
+testInvalidSignedManifest

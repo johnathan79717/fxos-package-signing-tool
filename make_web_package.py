@@ -1,8 +1,13 @@
 import os
 import sys
+import subprocess
 
 import string
 import random
+
+import json
+import hashlib
+import base64
 
 # Run it as such:
 # python make_web_package.py <folder> <package.pak>
@@ -17,6 +22,7 @@ rootdir = sys.argv[1]
 # open output file
 dest_package = open(sys.argv[2], "wb")
 
+script_dir = os.getcwd()
 # cd to the folder so we have relative paths
 os.chdir(rootdir)
 
@@ -32,17 +38,35 @@ try:
 except:
   print("manifest.webapp not found");
   raise
-
 manifest_path = paths[manifest_index]
 del paths[manifest_index]
-paths.insert(0, manifest_path)
 
+#calculate hashes
+resources = []
 for path in paths:
   try:
     txt = open(path)
   except:
-    # if we can't open the file, then skip it
     continue
+  sha256 = hashlib.sha256()
+  sha256.update(txt.read())
+  # we don't want the "./" prefix of each path
+  resources.append({
+    'src': path[2:],
+    'integrity': base64.b64encode(sha256.digest())
+    })
+  txt.close()
+
+tmp_manifest_path = 'manifest.webapp.tmp'
+# read manifest and add the resource hashes to it
+# write to a temporary location so that the signing tool can read it
+with open(manifest_path, 'r') as manifest_file, open(tmp_manifest_path, 'w') as tmp_manifest:
+  manifest_object = json.load(manifest_file)
+  manifest_object['moz-resources'] = resources
+  manifest_string = json.dumps(manifest_object, indent=2) + '\r\n'
+  tmp_manifest.write(manifest_string)
+
+def write_package(path, txt):
   # Write token to mark begining of the file
   dest_package.write("--"+token+"\r\n")
 
@@ -76,7 +100,26 @@ for path in paths:
   dest_package.write("Content-Type: "+content_type +"\r\n")
   dest_package.write("\r\n")
   # Write file contents
-  dest_package.write(txt.read())
+  dest_package.write(txt)
+
+# create_test_files.sh will calculate signatures in testValidSignedManifest/manifest.sig
+subprocess.call([os.path.join(script_dir, 'create_test_files.sh'), tmp_manifest_path])
+subprocess.call(['rm', tmp_manifest_path])
+signature_path = os.path.join(script_dir, 'testValidSignedManifest/manifest.sig');
+with open(signature_path, 'r') as signature_file:
+  signature = base64.b64encode(signature_file.read())
+  dest_package.write('manifest_signature: ' + signature + '\r\n')
+  write_package(manifest_path, manifest_string)
+
+for path in paths:
+  try:
+    txt = open(path)
+  except:
+    # if we can't open the file, then skip it
+    continue
+  write_package(path, txt.read())
 
 # Write package end line
 dest_package.write("--"+token+"--")
+
+dest_package.close()

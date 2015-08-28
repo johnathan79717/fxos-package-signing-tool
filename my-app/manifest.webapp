@@ -12,23 +12,5 @@
       }
     }
   ],
-  "moz-resources": [
-    {
-      "src": "/index.html",
-      "integrity": "sha256-kass...eoirW-e"
-    },
-    {
-      "src": "/page2.html",
-      "integrity": "sha256-kasguie...ngeW-e"
-    },
-    {
-      "src": "/script.js",
-      "integrity": "sha256-agjdia2...wgda"
-    },
-    {
-      "src": "/library.js",
-       "integrity": "sha256-geijfi...ae3W"
-    }
-  ],
   "moz-package-location": "https://example.com/myapp/app.pak"
 }

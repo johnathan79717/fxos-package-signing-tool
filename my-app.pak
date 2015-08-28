@@ -1,63 +1,64 @@
---FFKBBE6V5A
+manifest_signature: MIIF0gYJKoZIhvcNAQcCoIIFwzCCBb8CAQExCzAJBgUrDgMCGgUAMAsGCSqGSIb3DQEHAaCCA5wwggOYMIICgKADAgECAgECMA0GCSqGSIb3DQEBCwUAMHMxCzAJBgNVBAYTAlVTMQswCQYDVQQIEwJDQTEWMBQGA1UEBxMNTW91bnRhaW4gVmlldzEkMCIGA1UEChMbRXhhbXBsZSBUcnVzdGVkIENvcnBvcmF0aW9uMRkwFwYDVQQDExBUcnVzdGVkIFZhbGlkIENBMB4XDTE1MDgyNDA5MTEzOFoXDTM1MDgyNDA5MTEzOFowdDELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAkNBMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MSQwIgYDVQQKExtFeGFtcGxlIFRydXN0ZWQgQ29ycG9yYXRpb24xGjAYBgNVBAMTEVRydXN0ZWQgQ29ycCBDZXJ0MIIBIDANBgkqhkiG9w0BAQEFAAOCAQ0AMIIBCAKCAQEA2qMp97njHVXbnafne6qIx5D+j2AUC6j2159DK6PnL78L5UxD2KgjQZvkOaIZJe11KPYTf7upftat4Shs1c0SsMbHzDY7K0E/lSslD4zmb4TckOGPZzxtEIl7v3+yCjKqMRRMcBnaB20LrxTPQ3PS9iBCzTVbWlosbqmK/+1Pkv4Cmp3sXWJm9QA1QAgJu0dm8sTCyW0F8M3t9zIRNkZoQCERiLYQ/zIDC62B1iS6pOswz2MX3lh05O1FYKJ/y+lM+U7Wv/Ml87cpDNztmNbS1LET1wFjxiXNrc9kuqveT1Ccb4XG3x7KykXTfAnGGJb1mTM1YK84drfVmbgbNixgvwIBA6M4MDYwDAYDVR0TAQH/BAIwADAWBgNVHSUBAf8EDDAKBggrBgEFBQcDAzAOBgNVHQ8BAf8EBAMCB4AwDQYJKoZIhvcNAQELBQADggEBAGEqlAKtBMFSalloBdQBR0KODIhzAJfkzp0FIokZwF4YsXsAZdPpdZ4rwLTfdI1IhF2vLkW3KAuV0fEtShuqTIZVFqszEy/N2mLIZ5bjqJzqDT3/az4/vn/UBBgEiVvkSYYn0WlypRsGtpax9XSZvmXJ7PW9VKokJ5xIuFT87oyhdz3e5NgymmK2KGuBLUWKNNxap9GU2CEHVvsETcjqeELhH2LXd7H4xWVBu54tmuAIGa9Q16OenhMejEkAdbHzth0X/M/KNIEoucXRLtK8xVxdN4wcYZCXwQR1dgej7G4ZzcKtzJqN12msyKaeaJnhHBWYCCRaziH8q4Cswyp3BHwxggH+MIIB+gIBATB4MHMxCzAJBgNVBAYTAlVTMQswCQYDVQQIEwJDQTEWMBQGA1UEBxMNTW91bnRhaW4gVmlldzEkMCIGA1UEChMbRXhhbXBsZSBUcnVzdGVkIENvcnBvcmF0aW9uMRkwFwYDVQQDExBUcnVzdGVkIFZhbGlkIENBAgECMAkGBSsOAwIaBQCgXTAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqGSIb3DQEJBTEPFw0xNTA4MjgwOTAzMzFaMCMGCSqGSIb3DQEJBDEWBBRpqbdhHG54AdfEoutHGFnqUY5XuDANBgkqhkiG9w0BAQEFAASCAQCAZTQZIGIazwekE0X/oy+FSNtbOaYcRdyAGO5+ceS1sJI7Nl8qHIQE+kGjvn/ScEpXHECVgITxlaRh6VQBdykNBitc3kIjDDTqaPzOHSG2+1+PDWuL3aI7GQ4pN1+0m4jBLdi0M60w7a0BTXfqfe0crtQw1VYKRIKwZWM5UWH3Z/Iq1hffDicKs8IRfU9GGNE1XBKjKsWlqI6IuvT97ymTrza1kC2ZsQEEwyNKu+ptiU6DQANqVcM0HIua1OgG20n7PmKeaeQD9rd140d02h9mrufwfZmG15CQMQbew3Ffg0+JTQ2dBbZ7544dx8I5Qa5Td4QWLnjmmh2fqS5R/ns6
+--XTNSC9EVO0
 Content-Location: manifest.webapp
 Content-Type: application/x-web-app-manifest+json
 
 {
-  "name": "My App",
-  "description": "A great app!",
-  "moz-uuid": "some-uuid",
+  "name": "My App", 
+  "moz-resources": [
+    {
+      "src": "page2.html", 
+      "integrity": "JvuZKQ1HVgnwQaXaQ/ZZP+9dnoavhP+9J5g0uZb24lY="
+    }, 
+    {
+      "src": "index.html", 
+      "integrity": "lMdKIyAwx2g4YfaBtLvklLvHrH/U5aDe0WMdGPtqUK8="
+    }, 
+    {
+      "src": "scripts/script.js", 
+      "integrity": "X+u7WQiSj9O+RlTVxc/9DIUE6l9raJZuSiO8kPtHWO4="
+    }, 
+    {
+      "src": "scripts/library.js", 
+      "integrity": "wSBQECqzdVURievWQgCkNsr22d+rNNMkcm1wf23Riis="
+    }
+  ], 
   "moz-permissions": [
     {
       "systemXHR": {
         "description": "Needed to download stuff"
-      },
+      }, 
       "devicestorage:pictures": {
         "description": "Need to load pictures"
       }
     }
-  ],
-  "moz-resources": [
-    {
-      "src": "/index.html",
-      "integrity": "sha256-kass...eoirW-e"
-    },
-    {
-      "src": "/page2.html",
-      "integrity": "sha256-kasguie...ngeW-e"
-    },
-    {
-      "src": "/script.js",
-      "integrity": "sha256-agjdia2...wgda"
-    },
-    {
-      "src": "/library.js",
-       "integrity": "sha256-geijfi...ae3W"
-    }
-  ],
-  "moz-package-location": "https://example.com/myapp/app.pak"
+  ], 
+  "moz-uuid": "some-uuid", 
+  "moz-package-location": "https://example.com/myapp/app.pak", 
+  "description": "A great app!"
 }
---FFKBBE6V5A
+--XTNSC9EVO0
 Content-Location: page2.html
 Content-Type: text/html
 
 <html>
   page2.html
 </html>
---FFKBBE6V5A
+--XTNSC9EVO0
 Content-Location: index.html
 Content-Type: text/html
 
 <html>
   index.html
 </html>
---FFKBBE6V5A
+--XTNSC9EVO0
 Content-Location: scripts/script.js
 Content-Type: text/javascript
 
 // script.js
---FFKBBE6V5A
+--XTNSC9EVO0
 Content-Location: scripts/library.js
 Content-Type: text/javascript
 
 // library.js
---FFKBBE6V5A--
+--XTNSC9EVO0--
