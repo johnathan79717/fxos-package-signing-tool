@@ -146,6 +146,7 @@ generate_files() {
 #Start of execution
 if [ ${1} ] && [ "${1}" == '--regenerate-test-certs' ]; then
   generate_files
+  exit 0
 elif [ "${1}" == '--help' ]; then
     usage
     exit 1
