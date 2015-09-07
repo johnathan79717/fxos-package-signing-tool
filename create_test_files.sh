@@ -169,7 +169,7 @@ CURDIR=`pwd`
 cd $CURDIR
 
 if [ $# == "0" ]; then
-  MANIFEST_PATH= ${BASE_PATH}/manifest.webapp
+  MANIFEST_PATH=${BASE_PATH}/manifest.webapp
 else
   MANIFEST_PATH=$1
 fi

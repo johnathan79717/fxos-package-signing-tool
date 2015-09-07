@@ -41,38 +41,7 @@ except:
 manifest_path = paths[manifest_index]
 del paths[manifest_index]
 
-#calculate hashes
-resources = []
-for path in paths:
-  try:
-    txt = open(path)
-  except:
-    continue
-  sha256 = hashlib.sha256()
-  sha256.update(txt.read())
-  # we don't want the "./" prefix of each path
-  resources.append({
-    'src': path[2:],
-    'integrity': base64.b64encode(sha256.digest())
-    })
-  txt.close()
-
-tmp_manifest_path = 'manifest.webapp.tmp'
-# read manifest and add the resource hashes to it
-# write to a temporary location so that the signing tool can read it
-with open(manifest_path, 'r') as manifest_file, open(tmp_manifest_path, 'w') as tmp_manifest:
-  manifest_object = json.load(manifest_file)
-  manifest_object['moz-resources'] = resources
-  manifest_string = json.dumps(manifest_object, indent=2) + '\r\n'
-  tmp_manifest.write(manifest_string)
-
-def write_package(path, txt):
-  # Write token to mark begining of the file
-  dest_package.write("--"+token+"\r\n")
-
-  # Content location header
-  dest_package.write("Content-Location: "+ os.path.normpath(path) + "\r\n")
-
+def header(path):
   # Figure out the content type
   content_type = "text/plain"
   if path.endswith(".html") or path.endswith(".htm"):
@@ -97,19 +66,56 @@ def write_package(path, txt):
     content_type = "text/css"
   if path.endswith(".webapp"):
     content_type = "application/x-web-app-manifest+json"
-  dest_package.write("Content-Type: "+content_type +"\r\n")
-  dest_package.write("\r\n")
+
+  # Content location header
+  ret = "Content-Location: "+ os.path.normpath(path) + "\r\n"
+  ret += "Content-Type: "+content_type +"\r\n"
+  ret += "\r\n"
+  return ret
+
+#calculate hashes
+resources = []
+for path in paths:
+  try:
+    txt = open(path)
+  except:
+    continue
+  sha256 = hashlib.sha256()
+  sha256.update(header(path))
+  sha256.update(txt.read())
+  # we don't want the "./" prefix of each path
+  resources.append({
+    'src': path[2:],
+    'integrity': base64.b64encode(sha256.digest())
+    })
+  txt.close()
+
+new_manifest_path = os.path.join(script_dir, 'manifest.webapp')
+# read manifest and add the resource hashes to it
+# write to a temporary location so that the signing tool can read it
+with open(manifest_path, 'r') as manifest_file, open(new_manifest_path, 'w') as new_manifest:
+  manifest_object = json.load(manifest_file)
+  manifest_object['moz-resources'] = resources
+  manifest_string = json.dumps(manifest_object, indent=2, separators=(',',': '))
+  new_manifest.write(manifest_string)
+
+def write_package(path, txt):
+  # Write token to mark begining of the file
+  dest_package.write("--"+token+"\r\n")
+
+  dest_package.write(header(path))
+
   # Write file contents
   dest_package.write(txt)
 
 # create_test_files.sh will calculate signatures in testValidSignedManifest/manifest.sig
-subprocess.call([os.path.join(script_dir, 'create_test_files.sh'), tmp_manifest_path])
-subprocess.call(['rm', tmp_manifest_path])
+subprocess.call([os.path.join(script_dir, 'create_test_files.sh'), new_manifest_path])
+# subprocess.call(['rm', new_manifest_path])
 signature_path = os.path.join(script_dir, 'testValidSignedManifest/manifest.sig');
 with open(signature_path, 'r') as signature_file:
   signature = base64.b64encode(signature_file.read())
-  dest_package.write('manifest_signature: ' + signature + '\r\n')
-  write_package(manifest_path, manifest_string)
+  dest_package.write('manifest-signature: ' + signature + '\r\n')
+  write_package(manifest_path, manifest_string + '\r\n')
 
 for path in paths:
   try:
