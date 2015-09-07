@@ -81,8 +81,10 @@ for path in paths:
   except:
     continue
   sha256 = hashlib.sha256()
-  sha256.update(header(path))
-  sha256.update(txt.read())
+  # sha256.update("HTTP/1.1 200\r\n" + header(path))
+  # sha256.update(txt.read())
+  resource = "HTTP/1.1 200 \r\n" + header(path) + txt.read()
+  sha256.update(resource)
   # we don't want the "./" prefix of each path
   resources.append({
     'src': path[2:],
@@ -107,6 +109,8 @@ def write_package(path, txt):
 
   # Write file contents
   dest_package.write(txt)
+
+  dest_package.write("\r\n")
 
 # create_test_files.sh will calculate signatures in testValidSignedManifest/manifest.sig
 subprocess.call([os.path.join(script_dir, 'create_test_files.sh'), new_manifest_path])
