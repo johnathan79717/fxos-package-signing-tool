@@ -81,10 +81,8 @@ for path in paths:
   except:
     continue
   sha256 = hashlib.sha256()
-  # sha256.update("HTTP/1.1 200\r\n" + header(path))
-  # sha256.update(txt.read())
-  resource = "HTTP/1.1 200 \r\n" + header(path) + txt.read()
-  sha256.update(resource)
+  sha256.update(header(path))
+  sha256.update(txt.read())
   # we don't want the "./" prefix of each path
   resources.append({
     'src': path[2:],
