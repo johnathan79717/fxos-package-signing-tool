@@ -97,7 +97,7 @@ with open(manifest_path, 'r') as manifest_file, open(new_manifest_path, 'w') as 
   manifest_object = json.load(manifest_file)
   manifest_object['moz-resources'] = resources
   manifest_string = json.dumps(manifest_object, indent=2, separators=(',',': '))
-  new_manifest.write(manifest_string)
+  new_manifest.write(header(manifest_path) + manifest_string)
 
 def write_package(path, txt):
   # Write token to mark begining of the file

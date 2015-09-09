@@ -1,0 +1,37 @@
+Content-Location: manifest.webapp
+Content-Type: application/x-web-app-manifest+json
+
+{
+  "name": "My App",
+  "moz-resources": [
+    {
+      "src": "page2.html",
+      "integrity": "JREF3JbXGvZ+I1KHtoz3f46ZkeIPrvXtG4VyFQrJ7II="
+    },
+    {
+      "src": "index.html",
+      "integrity": "B5Phw8L1tpyRBkI0gwg/evy1fgtMlMq3BIY3Q8X0rYU="
+    },
+    {
+      "src": "scripts/script.js",
+      "integrity": "6TqtNArQKrrsXEQWu3D9ZD8xvDRIkhyV6zVdTcmsT5Q="
+    },
+    {
+      "src": "scripts/library.js",
+      "integrity": "TN2ByXZiaBiBCvS4MeZ02UyNi44vED+KjdjLInUl4o8="
+    }
+  ],
+  "moz-permissions": [
+    {
+      "systemXHR": {
+        "description": "Needed to download stuff"
+      },
+      "devicestorage:pictures": {
+        "description": "Need to load pictures"
+      }
+    }
+  ],
+  "moz-uuid": "some-uuid",
+  "moz-package-location": "https://example.com/myapp/app.pak",
+  "description": "A great app!"
+}
