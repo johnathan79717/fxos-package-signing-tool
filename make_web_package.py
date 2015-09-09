@@ -117,7 +117,7 @@ signature_path = os.path.join(script_dir, 'testValidSignedManifest/manifest.sig'
 with open(signature_path, 'r') as signature_file:
   signature = base64.b64encode(signature_file.read())
   dest_package.write('manifest-signature: ' + signature + '\r\n')
-  write_package(manifest_path, manifest_string + '\r\n')
+  write_package(manifest_path, manifest_string)
 
 for path in paths:
   try:
