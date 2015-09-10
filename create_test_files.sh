@@ -108,7 +108,7 @@ addCerts() {
   echo y >> ${ee_responses} # Is this a critical constraint?
 
   make_cert="certutil -d ${db_path} -f ${password_file} -S -g 2048 -Z SHA256 \
-                      -z ${noisefile} -y 3 -2 --extKeyUsage critical,codeSigning"
+                      -z ${noisefile} -y 65537 -2 --extKeyUsage critical,codeSigning"
   ${make_cert} -v 480 -n ${4} -m 1 -s "${ca_subj}" --keyUsage critical,certSigning \
              -t ",,CTu" -x < ${ca_responses} 2>&1 >/dev/null
   ${make_cert} -v 240 -n ${5} -c ${4} -m 2 -s "${ee_subj}" --keyUsage critical,digitalSignature \
