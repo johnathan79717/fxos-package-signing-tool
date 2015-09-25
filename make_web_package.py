@@ -18,6 +18,10 @@ def token_generator(size=6, chars=string.ascii_uppercase + string.digits):
 # generate random token
 token = token_generator(10)
 
+if len(sys.argv) <= 1:
+    print("usage: python make_web_package.py <app-folder> <package-name>");
+    exit(1);
+
 rootdir = sys.argv[1]
 # open output file
 dest_package = open(sys.argv[2], "wb")
