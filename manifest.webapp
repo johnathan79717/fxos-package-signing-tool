@@ -10,7 +10,7 @@ Content-Type: application/x-web-app-manifest+json
     },
     {
       "src": "index.html",
-      "integrity": "B5Phw8L1tpyRBkI0gwg/evy1fgtMlMq3BIY3Q8X0rYU="
+      "integrity": "siNU+PWPTj6LWlPQ1+5NG9MSdfI1elwaqXLwvE8KTF4="
     },
     {
       "src": "scripts/script.js",
