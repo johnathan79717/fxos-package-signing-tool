@@ -59,7 +59,7 @@ def header(path):
   if path.endswith(".gif"):
     content_type = "image/gif"
   if path.endswith(".svg"):
-    content_type = "image/svg"
+    content_type = "image/svg+xml"
   if path.endswith(".ogg"):
     content_type = "audio/ogg"
   if path.endswith(".ogg"):
