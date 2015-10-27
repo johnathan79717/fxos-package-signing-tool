@@ -9,6 +9,8 @@ import json
 import hashlib
 import base64
 
+import uuid
+
 # Run it as such:
 # python make_web_package.py <folder> <package.pak>
 
@@ -100,6 +102,8 @@ new_manifest_path = os.path.join(script_dir, 'manifest.webapp')
 with open(manifest_path, 'r') as manifest_file, open(new_manifest_path, 'w') as new_manifest:
   manifest_object = json.load(manifest_file)
   manifest_object['moz-resources'] = resources
+  if 'package-identifier' not in manifest_object:
+      manifest_object['package-identifier'] = str(uuid.uuid4())
   manifest_string = json.dumps(manifest_object, indent=2, separators=(',',': '))
   new_manifest.write(header(manifest_path) + manifest_string)
 
