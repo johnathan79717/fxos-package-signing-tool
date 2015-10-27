@@ -1,7 +1,6 @@
 {
   "name": "My App",
   "description": "A great app!",
-  "package-identifier": "611FC2FE-491D-4A47-B3B3-43FBDF6F404F",
   "moz-permissions": [
     {
       "systemXHR": {

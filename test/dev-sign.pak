@@ -1,0 +1,68 @@
+manifest-signature: MIIF1AYJKoZIhvcNAQcCoIIFxTCCBcECAQExCzAJBgUrDgMCGgUAMAsGCSqGSIb3DQEHAaCCA54wggOaMIICgqADAgECAgECMA0GCSqGSIb3DQEBCwUAMHMxCzAJBgNVBAYTAlVTMQswCQYDVQQIEwJDQTEWMBQGA1UEBxMNTW91bnRhaW4gVmlldzEkMCIGA1UEChMbRXhhbXBsZSBUcnVzdGVkIENvcnBvcmF0aW9uMRkwFwYDVQQDExBUcnVzdGVkIFZhbGlkIENBMB4XDTE1MTAyNjA4NDIwOFoXDTM1MTAyNjA4NDIwOFowdDELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAkNBMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MSQwIgYDVQQKExtFeGFtcGxlIFRydXN0ZWQgQ29ycG9yYXRpb24xGjAYBgNVBAMTEVRydXN0ZWQgQ29ycCBDZXJ0MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA9J91YB4HfPE+k1m98z57pXxvJHzbelevRMU5Vwi0tc6T0eUXUSZhpiKSR0bsm9zg7F+1ZEABFi+g+CUznUaeT6z8soBDByawoOS1iR3h6ZIVMRrc7RYl5SylOCJqLKd9xSCteKBim9mhC9CfKVYLZp3C9ob17qxLwSuQCPGQH7DyUvgPdloNLn5P0leQDS+5o/Ep2NbGareXqCixP5f4o5kOwNmseVsOCuaz0sQbJgecEXmlMRldZfp+R0eO03xvViLkAzBeoVQS3zkaF2WK/f80NHd5mNZ65VCWa5YfNM+kYG34bViVbJNPYmZhQWpiHL7NmksUr/kMaoyIyi3FhwIDAQABozgwNjAMBgNVHRMBAf8EAjAAMBYGA1UdJQEB/wQMMAoGCCsGAQUFBwMDMA4GA1UdDwEB/wQEAwIHgDANBgkqhkiG9w0BAQsFAAOCAQEAa2rTfQ/FSJlOb/vEkuwRcBg0OqMW3pEGyFIMFuxq7qhJo8/GgDvR4itUew3gM4mp5SqW+IxZKCkouk8qTj1VevMjAxratk2KRPKwYsGz9KjLUgyzXns3w2ETDT8Mch33Drq9TbsDBdrySyDsgcZ2L1f2CUWMnwvNFVCP6ZexRIo933drnCvaLUkO8HSludhyIcwMKGB1ZhfbmkZnGTvxrTlnAPatR/5cHaF5kOhSv3dA/yTANUSM2DLIEHu1hFBzJFCHH6mw99BXfQBzqEWnsrbftfkhTN7Rg1L+Dj32iO33IK33zMxVXoSc0KnmSGBNpa/HOe6I8O6rj3ozz5ALFDGCAf4wggH6AgEBMHgwczELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAkNBMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MSQwIgYDVQQKExtFeGFtcGxlIFRydXN0ZWQgQ29ycG9yYXRpb24xGTAXBgNVBAMTEFRydXN0ZWQgVmFsaWQgQ0ECAQIwCQYFKw4DAhoFAKBdMBgGCSqGSIb3DQEJAzELBgkqhkiG9w0BBwEwHAYJKoZIhvcNAQkFMQ8XDTE1MTAyNzAzMTg0M1owIwYJKoZIhvcNAQkEMRYEFIiu9bwawhr5ZMHu9EJWIu2IO1lzMA0GCSqGSIb3DQEBAQUABIIBAFVIeDjun67P/oqntXZ8elP+/DDGLLqt7MuZ9iITgMCzebklEwO/90dT2cph2bMrvy2NBehK3aUFZaOPpQ67v8ikAmUH4wQ0rUQ3gj6rWjyMTvShcPoq3IntSmzjznf1yz+QICzvh3ojvqqZavly1l1yI9WUNxJKrSHCLC148vGFq/eimtYHhROVgG6brzK/e8aC2Pc98zwsvmuIrCp436Zn1yWRyjVoOZJMzGrbhjS0+1h+V6NLPTn6ZbYnLwda21lxSATRtVkfx2uHxj/7EL1EkSTYNc2staq/wNwsNvEDBSYf8vgk54xMUWS4uH/L4b7VGe9vGcOh6nKFVI79cIQ=
+--SHK7L6EJ59
+Content-Location: manifest.webapp
+Content-Type: application/x-web-app-manifest+json
+
+{
+  "name": "My App",
+  "moz-resources": [
+    {
+      "src": "page2.html",
+      "integrity": "JREF3JbXGvZ+I1KHtoz3f46ZkeIPrvXtG4VyFQrJ7II="
+    },
+    {
+      "src": "index.html",
+      "integrity": "zEubR310nePwd30NThIuoCxKJdnz7Mf5z+dZHUbH1SE="
+    },
+    {
+      "src": "scripts/script.js",
+      "integrity": "6TqtNArQKrrsXEQWu3D9ZD8xvDRIkhyV6zVdTcmsT5Q="
+    },
+    {
+      "src": "scripts/library.js",
+      "integrity": "TN2ByXZiaBiBCvS4MeZ02UyNi44vED+KjdjLInUl4o8="
+    }
+  ],
+  "moz-permissions": [
+    {
+      "systemXHR": {
+        "description": "Needed to download stuff"
+      },
+      "devicestorage:pictures": {
+        "description": "Need to load pictures"
+      }
+    }
+  ],
+  "package-identifier": "50248d34-0725-49c6-a633-dbc5f7d5b8af",
+  "moz-package-location": "https://example.com/myapp/app.pak",
+  "description": "A great app!"
+}
+--SHK7L6EJ59
+Content-Location: page2.html
+Content-Type: text/html
+
+<html>
+  page2.html
+</html>
+
+--SHK7L6EJ59
+Content-Location: index.html
+Content-Type: text/html
+
+<html>
+  Last updated: 2015/10/01 14:10 PST
+</html>
+
+--SHK7L6EJ59
+Content-Location: scripts/script.js
+Content-Type: text/javascript
+
+// script.js
+
+--SHK7L6EJ59
+Content-Location: scripts/library.js
+Content-Type: text/javascript
+
+// library.js
+
+--SHK7L6EJ59--
