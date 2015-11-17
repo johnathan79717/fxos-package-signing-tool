@@ -1,0 +1,54 @@
+#!/usr/bin/python3
+import cgi
+import cgitb
+
+import sys
+import subprocess
+
+cgitb.enable()
+
+request_zip_name = 'request.zip'
+response_zip_name = 'response.zip'
+tmp_folder = 'tmp'
+pak = 'response.pak'
+cert = 'trusted_ca1.der'
+
+def clean():
+    subprocess.check_call(['rm', '-rf', request_zip_name, tmp_folder, response_zip_name, pak])
+
+def main():
+    form = cgi.FieldStorage()
+    if 'package' not in form:
+        exit(1)
+
+    
+    subprocess.check_output(['mkdir', '-p', tmp_folder])
+    request_zip_content = form.getvalue('package')
+    with open(request_zip_name, "wb") as request_zip_file:
+        request_zip_file.write(request_zip_content)
+    subprocess.check_output(['unzip', request_zip_name, '-d', tmp_folder])
+
+    # subprocess.check_output(['./create_test_files.sh', '--regenerate-test-certs'])
+
+    folders = subprocess.check_output(['ls', tmp_folder], universal_newlines=True).split()
+    if len(folders) > 1:
+        error_response += 'We expect only one folder in your zip file.\n'
+    folder = folders[0]
+
+    subprocess.check_output(['python', 'make_web_package.py', tmp_folder+'/'+folder, pak])
+
+    subprocess.check_output(['zip', response_zip_name, pak, cert])
+    with open(response_zip_name, "rb") as response_zip_file:
+        sys.stdout.buffer.write(b'Content-Type: application/zip\n\n')
+        sys.stdout.buffer.write(response_zip_file.read())
+
+try:
+    main()
+except Exception as e:
+    print('Content-Type: text/html\n\n<html>')
+    print('Error:')
+    print(e.output)
+    print("</html>")
+
+finally:
+    clean()

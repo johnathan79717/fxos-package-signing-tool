@@ -11,5 +11,5 @@
       }
     }
   ],
-  "moz-package-location": "https://example.com/myapp/app.pak"
+  "moz-package-origin": "http://people.mozilla.org"
 }
