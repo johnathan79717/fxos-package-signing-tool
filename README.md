@@ -16,10 +16,13 @@ sudo apt-get install libnss3-tools
 ```
 
 ####Mac OS X
-If you have a build of gecko, then you have the files you need. You can modify the following environment variables:
+If you have a build of gecko, then you have the files you need. Do the following to make `certutil` and the dylibs reachable, assuming `~/lib` doesn't exist.
 
-1. Add `<path-to-objdir-gecko>/dist/bin` to `PATH`
-2. Add `<path-to-objdir-gecko>/dist/lib` and `<path-to-objdir-gecko>/dist/sdk/lib` to `DYLD_LIBRARY_PATH`
+```
+export PATH $PATH:<path-to-objdir-gecko>/dist/bin
+ln -s <path-to-objdir-gecko>/dist/lib ~/lib
+ln -s <path-to-objdir-gecko>/dist/lib/libmozglue.dylib ~/lib
+```
 
 ####Generate a key pair, and create certificates and signingDB:
 ```
