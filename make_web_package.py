@@ -34,9 +34,13 @@ os.chdir(rootdir)
 
 paths = []
 for root, subdirs, files in os.walk("."):
-  for onefile in files:
-    path = os.path.join(root, onefile)
-    paths.append(path)
+    subdirs[:] = [d for d in subdirs if d[0] != '.']
+    for onefile in files:
+        if onefile[0] == '.':
+            continue
+        path = os.path.join(root, onefile)
+        print(root, subdirs, onefile)
+        paths.append(path)
 
 # the manifest has to be the first resource
 try:
